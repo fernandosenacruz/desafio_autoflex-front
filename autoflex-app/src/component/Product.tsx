@@ -1,25 +1,36 @@
 import * as React from 'react';
 import { Button, Form } from 'react-bootstrap';
-
-// type Props = {
-//   label: string;
-//   count: number;
-//   onIncrement: () => void;
-// };
+import axios from 'axios';
 
 const Product: React.FC = props => {
-  // const { label, count, onIncrement } = props;
+  const form = React.useRef<HTMLInputElement>();
 
-  // const handleIncrement = () => {
-  //   onIncrement();
-  // };
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    const form = e.target;
+    const code = form.code.value;
+    const name = form.name.value;
+    const price = form.price.value;
+
+    try {
+      await axios.post('http://localhost:3001/product', {
+        code,
+        name,
+        price: Number(price),
+      });
+
+      form.reset();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
-    <Form>
+    <Form ref={form} className="product" onSubmit={(e) => handleSubmit(e)}>
       <h3>Register Product</h3>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Code</Form.Label>
-        <Form.Control type="text" required />
+        <Form.Control type="text" name="code" required />
         <Form.Text className="text-muted">
           Made up of letters and numbers
         </Form.Text>
@@ -27,12 +38,12 @@ const Product: React.FC = props => {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Name</Form.Label>
-        <Form.Control type="text" required />
+        <Form.Control type="text" name="name" required />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Price</Form.Label>
-        <Form.Control type="number" step={0.1} required />
+        <Form.Control type="number" step={0.1} name="price" required />
       </Form.Group>
 
       {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
