@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 
-const Feedstock: React.FC = props => {
+const Feedstock: React.FC = () => {
   const form = React.useRef<HTMLFormElement>();
 
   const handleSubmit = async (e: any) => {

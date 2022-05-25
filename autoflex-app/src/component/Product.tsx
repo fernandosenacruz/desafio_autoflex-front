@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 
-const Product: React.FC = props => {
+const Product: React.FC = () => {
   const form = React.useRef<HTMLInputElement>();
 
   const handleSubmit = async (e: any) => {
