@@ -3,13 +3,17 @@ import Product from './component/Product';
 import Feedstock from './component/Feedstock';
 import CardList from './component/CardList';
 import './App.css';
+import ProductList from './component/ProductList';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Product />
-      <Feedstock />
+      <div className='container_form'>
+        <Product />
+        <Feedstock />
+      </div>
       <CardList />
+      <ProductList />
     </div>
   );
 }
