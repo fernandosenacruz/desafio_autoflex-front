@@ -20,6 +20,7 @@ const Product: React.FC = () => {
       });
 
       form.reset();
+      await axios.get('http://localhost:3001/products');
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +44,7 @@ const Product: React.FC = () => {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Price</Form.Label>
-        <Form.Control type="number" step={0.1} name="price" required />
+        <Form.Control type="number" name="price" required />
       </Form.Group>
 
       {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">

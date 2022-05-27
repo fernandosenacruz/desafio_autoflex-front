@@ -16,7 +16,6 @@ const CardList: React.FC = () => {
     try {
       const products = await axios.get(`${BASE_URL}products`);
       const feedstocks = await axios.get(`${BASE_URL}feedstocks`);
-      console.log(products.data);
 
       setProduct(products.data);
       setFeedstock(feedstocks.data);
@@ -26,26 +25,26 @@ const CardList: React.FC = () => {
   }
 
   return (
-    <>
-      <Card>
+    <div className="container_cards">
+      <Card className="card">
         {product.map((p) => 
-          <ListGroup variant="flush">
+          <ListGroup variant="flush" className="card-group">
             <ListGroup.Item>{p.name}</ListGroup.Item>
             <ListGroup.Item>code: {p.code}</ListGroup.Item>
             <ListGroup.Item>price: {p.price}</ListGroup.Item>
           </ListGroup>      
         )}
       </Card>
-      <Card>
+      <Card className="card">
         {feedstock.map((f) => 
-          <ListGroup variant="flush">
+          <ListGroup variant="flush" className="card-group">
             <ListGroup.Item>{f.name}</ListGroup.Item>
             <ListGroup.Item>code: {f.code}</ListGroup.Item>
             <ListGroup.Item>quantity: {f.price}</ListGroup.Item>
           </ListGroup>      
         )}
       </Card>
-    </>
+    </div>
   );
 }
 

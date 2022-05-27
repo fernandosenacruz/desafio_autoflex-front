@@ -20,6 +20,7 @@ const Feedstock: React.FC = () => {
       });
 
       form.reset();
+      await axios.get('http://localhost:3001/feedstocks');
     } catch (error) {
       console.log(error);
     }
